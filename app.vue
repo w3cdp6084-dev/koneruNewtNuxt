@@ -2,6 +2,6 @@
   <div>
     <Header ref="header" />
     <NuxtPage />
-    <Footer />
+    <!-- <Footer /> -->
   </div>
 </template>

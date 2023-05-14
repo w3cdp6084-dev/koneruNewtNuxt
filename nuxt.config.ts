@@ -35,10 +35,12 @@ export default defineNuxtConfig({
  },
  build: {
    plugins: [
+    "~/plugins/gsap.js",
      new webpack.ProvidePlugin({
        $: 'jquery',
        jQuery: 'jquery'
      })
+     
    ]
  }
 })
