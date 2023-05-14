@@ -17,6 +17,7 @@
     "webpack": "^5.82.1"
   },
   "dependencies": {
+    "gsap": "^3.11.5",
     "newt-client-js": "^3.2.4"
   }
 }

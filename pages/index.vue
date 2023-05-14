@@ -1,11 +1,10 @@
-
 <template>
   <div>
     <div>
       <ul>
         <li v-for="article in articles" :key="article._id">
           <NuxtLink :to="`/articles/${article.slug}`">
-            {{ article.title }}
+            <h1>{{ article.title }}</h1>
           </NuxtLink>
         </li>
       </ul>
