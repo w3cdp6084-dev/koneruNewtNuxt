@@ -17,27 +17,3 @@ export default defineComponent({
   name: 'Header'
 })
 </script>
-
-<style scoped>
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav li {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-}
-</style>

@@ -1,12 +1,15 @@
+
 <template>
   <div>
-    <ul>
-      <li v-for="article in articles" :key="article._id">
-        <NuxtLink :to="`/articles/${article.slug}`">
-          {{ article.title }}
-        </NuxtLink>
-      </li>
-    </ul>
+    <div>
+      <ul>
+        <li v-for="article in articles" :key="article._id">
+          <NuxtLink :to="`/articles/${article.slug}`">
+            {{ article.title }}
+          </NuxtLink>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 

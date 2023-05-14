@@ -1,7 +1,6 @@
 <template>
  <main class="main">
    <h2>{{ article?.title }}</h2>
-   <!-- eslint-disable-next-line vue/no-v-html -->
    <div v-html="article?.body" />
  </main>
 </template>

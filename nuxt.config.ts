@@ -20,7 +20,7 @@ export default defineNuxtConfig({
      { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
    ],
  },
- css: ["/assets/styles/main.scss",],
+ css: ["/assets/styles/main.scss","~/assets/styles/components/header.scss","~/assets/styles/components/footer.scss"],
  vite: {
    css: {
      preprocessorOptions: {
