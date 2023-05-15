@@ -1,20 +1,22 @@
 <template>
   <div>
-    <div class="loading-screen" :style="{ opacity: isLoaded ? 0 : 1 }">
-      <!-- Loading content goes here -->
+    <div v-if="!isLoaded" class="loading-screen">
       <p>{{ counter.toFixed(0) }}%</p>
     </div>
-    <div>
-      <ul>
-        <li v-for="article in articles" :key="article._id">
-          <NuxtLink :to="`/articles/${article.slug}`">
-            <h1>{{ article.title }}</h1>
-          </NuxtLink>
-        </li>
-      </ul>
-    </div>
+    <transition name="fade">
+      <div v-show="isLoaded">
+        <ul>
+          <li v-for="article in articles" :key="article._id">
+            <NuxtLink :to="`/articles/${article.slug}`">
+              <h1>{{ article.title }}</h1>
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
+
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
@@ -33,7 +35,6 @@ const { data } = await useAsyncData('articles', async () => {
       select: ['_id', 'title', 'slug', 'body']
     }
   })
-  isLoaded.value = true
   return result
 })
 const articles = data.value?.items
@@ -51,10 +52,8 @@ onMounted(() => {
     duration: 2,
     value: 100,
     ease: 'linear',
-    onUpdate: () => {
-      if (counter.value >= 100 && isLoaded.value) {
-        isLoaded.value = true
-      }
+    onComplete: () => {
+      isLoaded.value = true
     }
   })
 })
@@ -68,10 +67,20 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   background-color: #fff;
-  opacity: 0;
-  transition: opacity 1s;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
 }
 </style>
