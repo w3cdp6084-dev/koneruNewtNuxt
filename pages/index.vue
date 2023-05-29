@@ -15,13 +15,18 @@
       </div>
     </transition>
   </div>
+  <div class="test-element">
+      Test Element
+  </div>
 </template>
 
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
+import { useAsyncData, useNuxtApp } from '#app'
 import type { Article } from '~/types/article'
+import { useHead } from '@vueuse/head'
 
 let counter = ref(0)
 let isLoaded = ref(false)
@@ -46,7 +51,6 @@ useHead({
   ]
 })
 
-// GSAP animations
 onMounted(() => {
   gsap.to(counter, {
     duration: 2,
@@ -54,10 +58,14 @@ onMounted(() => {
     ease: 'linear',
     onComplete: () => {
       isLoaded.value = true
+      gsap.to('.hamburger-menu', {transform: 'translateX(0px)', duration: 1})
     }
   })
 })
+
 </script>
+
+
 
 <style scoped>
 .loading-screen {
@@ -83,4 +91,5 @@ onMounted(() => {
 .fade-enter-to, .fade-leave-from {
   opacity: 1;
 }
+
 </style>

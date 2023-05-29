@@ -1,14 +1,14 @@
-.hambergerMenu{
-    position: fixed;
-    top: 0;
-    // right: 10px;
-    bottom: 0;
-    width: 110px;
-    height: calc(100% - 20px);
-    margin: auto 0;
-    transform: translateX(120px);
-    z-index: 11;
-}
+// .hambergerMenu{
+//     position: fixed;
+//     top: 0;
+//     right: 10px;
+//     bottom: 0;
+//     width: 110px;
+//     height: calc(100% - 20px);
+//     margin: auto 0;
+//     transform: translateX(120px);
+//     z-index: 11;
+// }
 .hambergerMenu-overlay-01, .hambergerMenu-overlay-01:before {
     position: absolute;
     top: 0;
@@ -190,7 +190,6 @@ button {
  cursor: pointer;
 }
 
-
-.hambergerMenu-hover[data-v-2aed8398]:hover {
+.hambergerMenu-hover:hover {
  transform: scale(.9,.98);
 }
