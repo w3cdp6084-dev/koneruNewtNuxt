@@ -199,32 +199,42 @@ export default {
 
       // メニューが開かれている場合
       if (this.isMenuOpen) {
-        this.$gsap.to(".hamburger-menu", {
+        this.$gsap.to(".hambergerMenu-overlay-01", {
           duration: 0.3,
-          x: "-500px", // メニューを左に500pxスライドアウト
+          x: "0%", // 右から0%まで移動して表示
         });
 
         this.$gsap.to(".hambergerMenu-overlay-02", {
           duration: 0.3,
-          width: "500px", // オーバーレイの幅を500pxに拡大
-          opacity: 1, // オーバーレイを表示
+          x: "0%", // 右から0%まで移動して表示
+        });
+
+        this.$gsap.to(".hambergerMenu-contents", {
+          duration: 0.3,
+          opacity: 1, // コンテンツを表示
         });
       } else {
         // メニューが閉じられている場合
-        this.$gsap.to(".hamburger-menu", {
+        this.$gsap.to(".hambergerMenu-overlay-01", {
           duration: 0.3,
-          x: "0px", // メニューを元の位置に戻す
+          x: "100%", // 右に100%まで移動して非表示
         });
 
         this.$gsap.to(".hambergerMenu-overlay-02", {
           duration: 0.3,
-          width: "0px", // オーバーレイの幅を0pxに縮小
-          opacity: 0, // オーバーレイを非表示
+          x: "100%", // 右に100%まで移動して非表示
+        });
+
+        this.$gsap.to(".hambergerMenu-contents", {
+          duration: 0.3,
+          opacity: 0, // コンテンツを非表示
         });
       }
     },
   },
 };
+
+
 
 </script>
 
