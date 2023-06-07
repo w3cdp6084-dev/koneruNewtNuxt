@@ -5,10 +5,16 @@
         <li v-for="article in articles" :key="article._id">
           <NuxtLink :to="`/articles/${article.slug}`">
             <div>
-  <img v-if="article.coverImage" :src="article.coverImage.src" :alt="article.title" width="150" height="150" />
-</div>
-
+              <img v-if="article.coverImage" :src="article.coverImage.src" :alt="article.title" width="150" height="150" />
+            </div>
             <h1>{{ article.title }}</h1>
+            <p>{{ article.publishedAt }}</p>
+              <ul>
+    <li v-for="category in article.categories" :key="category">
+      {{ category.name }}
+    </li>
+    <time>{{formattedDate}}</time>
+  </ul>
           </NuxtLink>
         </li>
       </ul>
@@ -25,12 +31,12 @@ import { useHead } from '@vueuse/head'
 const { data } = await useAsyncData('articles', async () => {
   const { $newtClient } = useNuxtApp()
   const result = await $newtClient.getContents<Article>({
-    appUid: 'blog',
-    modelUid: 'article',
-    query: {
-      select: ['_id', 'title', 'slug', 'body','coverImage']
-    }
-  })
+  appUid: 'blog',
+  modelUid: 'article',
+  query: {
+    select: ['_id', 'title', 'slug', 'body', 'coverImage', 'publishedAt', 'categories']
+  }
+})
   return result
 })
 const articles = data.value?.items
