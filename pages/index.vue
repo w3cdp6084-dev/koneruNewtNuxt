@@ -1,23 +1,23 @@
 <template>
   <div>
-    <transition>
-      <div>
-        <ul>
-          <li v-for="article in articles" :key="article._id">
-            <NuxtLink :to="`/articles/${article.slug}`">
-              <h1>{{ article.title }}</h1>
-            </NuxtLink>
-          </li>
-        </ul>
-      </div>
-    </transition>
+    <div>
+      <ul>
+        <li v-for="article in articles" :key="article._id">
+          <NuxtLink :to="`/articles/${article.slug}`">
+            <div>
+  <img v-if="article.coverImage" :src="article.coverImage.src" :alt="article.title" width="150" height="150" />
+</div>
+
+            <h1>{{ article.title }}</h1>
+          </NuxtLink>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
-import { gsap } from 'gsap'
 import { useAsyncData, useNuxtApp } from '#app'
 import type { Article } from '~/types/article'
 import { useHead } from '@vueuse/head'
@@ -28,7 +28,7 @@ const { data } = await useAsyncData('articles', async () => {
     appUid: 'blog',
     modelUid: 'article',
     query: {
-      select: ['_id', 'title', 'slug', 'body']
+      select: ['_id', 'title', 'slug', 'body','coverImage']
     }
   })
   return result
@@ -43,5 +43,3 @@ useHead({
 })
 
 </script>
-
-
