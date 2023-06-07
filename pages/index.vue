@@ -8,13 +8,12 @@
               <img v-if="article.coverImage" :src="article.coverImage.src" :alt="article.title" width="150" height="150" />
             </div>
             <h1>{{ article.title }}</h1>
-            <p>{{ article.publishedAt }}</p>
-              <ul>
-    <li v-for="category in article.categories" :key="category">
-      {{ category.name }}
-    </li>
-    <time>{{formattedDate}}</time>
-  </ul>
+            <p>{{ formatDate(article._sys.createdAt) }}</p>
+            <ul>
+              <li v-for="category in article.categories" :key="category">
+                {{ category.name }}
+              </li>
+            </ul>
           </NuxtLink>
         </li>
       </ul>
@@ -27,6 +26,7 @@
 import { useAsyncData, useNuxtApp } from '#app'
 import type { Article } from '~/types/article'
 import { useHead } from '@vueuse/head'
+import { formatDate } from '~/utils/formatDate'
 
 const { data } = await useAsyncData('articles', async () => {
   const { $newtClient } = useNuxtApp()
@@ -34,7 +34,7 @@ const { data } = await useAsyncData('articles', async () => {
   appUid: 'blog',
   modelUid: 'article',
   query: {
-    select: ['_id', 'title', 'slug', 'body', 'coverImage', 'publishedAt', 'categories']
+    select: ['_id', 'title', 'slug', 'body', 'coverImage', '_sys.createdAt', 'categories']
   }
 })
   return result
