@@ -15,11 +15,6 @@ export default defineNuxtConfig({
          cdnApiToken: 'zqRueqTV1MjBhp5FaSXA_nk73blyfh396v4_61G0R50'
        }
      },
- head: {
-   script: [
-     { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
-   ],
- },
  css: ["/assets/styles/main.scss","~/assets/styles/components/header.scss","~/assets/styles/components/footer.scss","~/assets/styles/components/hamburgermenu.scss"],
  vite: {
    css: {

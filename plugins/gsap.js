@@ -1,6 +1,7 @@
 // ~/plugins/gsap.js
 import { gsap } from 'gsap'
+import { defineNuxtPlugin } from '#app'
 
-export default (_, inject) => {
-  inject('gsap', gsap)
-}
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.provide('gsap', gsap)
+})
