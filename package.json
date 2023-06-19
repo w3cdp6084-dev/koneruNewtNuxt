@@ -17,6 +17,7 @@
     "webpack": "^5.82.1"
   },
   "dependencies": {
+    "@nuxtjs/composition-api": "^0.33.1",
     "@vueuse/head": "^1.1.26",
     "gsap": "^3.11.5",
     "newt-client-js": "^3.2.4"

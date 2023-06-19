@@ -1,8 +1,11 @@
 <template>
+<div>
  <main class="main">
    <h2>{{ article?.title }}</h2>
-   <div v-html="article?.body" />
+   <div v-html="article?.body" ></div>
  </main>
+ <NuxtLink to="/">test</NuxtLink>
+</div>
 </template>
 
 <script lang="ts" setup>

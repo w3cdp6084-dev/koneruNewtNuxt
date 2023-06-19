@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import webpack from 'webpack'
 
 export default defineNuxtConfig({
   app: {
@@ -31,7 +30,5 @@ export default defineNuxtConfig({
  build: {
 
  },
- plugins: [
-  '~/plugins/gsap.js',
-],
+ plugins: ["~/plugins/newt.server.ts", "~/plugins/gsap.js"],
 })
